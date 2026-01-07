@@ -1,0 +1,36 @@
+RNG_test using PractRand version 0.95-planet36
+RNG = RNG_stdin, seed = unknown
+test set = core, folding = extra
+
+rng=RNG_stdin, seed=unknown
+length= 32 kibibytes (2^15 bytes), time= 0.2 seconds
+  Test Name                         Raw       Processed     Evaluation
+  BCFN(2+0,13-9,T)                  R= +34.0  p =  6.3e-9    VERY SUSPICIOUS 
+  DC6-9x1Bytes-1                    R= +20.3  p =  3.5e-10   VERY SUSPICIOUS 
+  Gap-16:A                          R= +11.4  p =  1.3e-8   very suspicious  
+  Gap-16:B                          R= +12.2  p =  3.4e-9    VERY SUSPICIOUS 
+  FPF-14+6/16:(0,14-8)              R=  +8.5  p =  3.7e-6   unusual          
+  FPF-14+6/16:(1,14-8)              R=  +8.8  p =  2.1e-6   unusual          
+  FPF-14+6/16:all                   R= +15.9  p =  2.4e-10   VERY SUSPICIOUS 
+  [Low1/8]BCFN(2+0,13-9,T)          R= +17.8  p =  3.6e-5   mildly suspicious
+  [Low1/8]DC6-9x1Bytes-1            R=  +8.6  p =  8.3e-4   unusual          
+  [Low1/8]Gap-16:A                  R=  +8.7  p =  1.7e-7   very suspicious  
+  [Low1/8]Gap-16:B                  R=  +9.0  p =  2.5e-7   very suspicious  
+  [Low1/16]DC6-9x1Bytes-1           R= +16.7  p =  4.5e-6   suspicious       
+  [Low1/32]DC6-9x1Bytes-1           R= +23.1  p =  2.8e-7   very suspicious  
+  [Low1/32]FPF-14+6/16:(0,14-11)    R= +19.6  p =  3.0e-9   suspicious       
+  [Low1/32]FPF-14+6/16:all          R= +23.7  p~=   1e-7    very suspicious  
+  [Low4/16]DC6-9x1Bytes-1           R= +15.4  p =  5.5e-7   very suspicious  
+  [Low4/16]Gap-16:A                 R=  +7.8  p =  5.1e-5   mildly suspicious
+  [Low4/16]Gap-16:B                 R=  +9.9  p =  3.5e-6   suspicious       
+  [Low4/32]DC6-9x1Bytes-1           R= +12.2  p =  3.3e-5   mildly suspicious
+  [Low4/32]Gap-16:A                 R= +23.2  p =  1.0e-20    FAIL !!        
+  [Low4/32]Gap-16:B                 R= +24.5  p =  5.8e-21    FAIL !!        
+  [Low8/32]DC6-9x1Bytes-1           R=  +8.1  p =  7.0e-4   unusual          
+  [Low8/32]FPF-14+6/16:(3,14-11)    R= +29.9  p =  6.9e-14   VERY SUSPICIOUS 
+  [Low8/32]FPF-14+6/16:all          R= +13.5  p =  6.4e-7   suspicious       
+  [Low8/64]DC6-9x1Bytes-1           R= +10.5  p =  1.5e-4   mildly suspicious
+  [Low8/64]Gap-16:A                 R=  +9.1  p =  9.1e-8   very suspicious  
+  [Low8/64]Gap-16:B                 R= +10.2  p =  1.9e-8   very suspicious  
+  ...and 72 test result(s) without anomalies
+

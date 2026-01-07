@@ -1,0 +1,22 @@
+RNG_test using PractRand version 0.95-planet36
+RNG = RNG_stdin, seed = unknown
+test set = core, folding = extra
+
+rng=RNG_stdin, seed=unknown
+length= 32 kibibytes (2^15 bytes), time= 0.2 seconds
+  Test Name                         Raw       Processed     Evaluation
+  Gap-16:B                          R=  +9.6  p =  3.3e-7   very suspicious  
+  FPF-14+6/16:all                   R=  +8.0  p =  4.1e-5   unusual          
+  ...and 97 test result(s) without anomalies
+
+rng=RNG_stdin, seed=unknown
+length= 64 kibibytes (2^16 bytes), time= 1.9 seconds
+  Test Name                         Raw       Processed     Evaluation
+  Gap-16:A                          R=  +9.7  p =  2.5e-7   very suspicious  
+  Gap-16:B                          R= +16.5  p =  1.5e-11    FAIL           
+  FPF-14+6/16:(0,14-7)              R= +17.2  p =  1.5e-13   VERY SUSPICIOUS 
+  FPF-14+6/16:(2,14-8)              R= +15.8  p =  2.2e-11   VERY SUSPICIOUS 
+  FPF-14+6/16:all                   R= +29.6  p =  3.1e-20    FAIL !         
+  [Low1/8]DC6-9x1Bytes-1            R=  -4.9  p =1-2.0e-3   unusual          
+  ...and 119 test result(s) without anomalies
+

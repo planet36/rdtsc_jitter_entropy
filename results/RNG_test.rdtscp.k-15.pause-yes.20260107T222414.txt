@@ -1,0 +1,28 @@
+RNG_test using PractRand version 0.95-planet36
+RNG = RNG_stdin, seed = unknown
+test set = core, folding = extra
+
+rng=RNG_stdin, seed=unknown
+length= 32 kibibytes (2^15 bytes), time= 0.2 seconds
+  Test Name                         Raw       Processed     Evaluation
+  BCFN(2+0,13-9,T)                  R=+143.2  p =  2.3e-34    FAIL !!!       
+  DC6-9x1Bytes-1                    R= +11.4  p =  8.5e-6   suspicious       
+  Gap-16:A                          R= +46.6  p =  4.2e-37    FAIL !!!       
+  Gap-16:B                          R= +56.4  p =  5.1e-43    FAIL !!!       
+  [Low1/8]DC6-9x1Bytes-1            R= +18.7  p =  1.1e-7   very suspicious  
+  [Low1/16]DC6-9x1Bytes-1           R= +11.7  p =  1.7e-4   mildly suspicious
+  [Low1/16]FPF-14+6/16:(1,14-11)    R= +17.6  p =  1.6e-8   suspicious       
+  [Low1/32]FPF-14+6/16:(0,14-11)    R= +45.1  p =  4.0e-20    FAIL !         
+  [Low1/32]FPF-14+6/16:all          R= +32.1  p~=   3e-12     FAIL           
+  [Low4/16]BCFN(2+0,13-9,T)         R= +22.3  p =  3.3e-6   suspicious       
+  [Low4/16]DC6-9x1Bytes-1           R= +60.4  p =  3.7e-26    FAIL !!        
+  [Low4/16]Gap-16:A                 R= +89.2  p =  1.6e-67    FAIL !!!!      
+  [Low4/16]Gap-16:B                 R=+115.1  p =  3.6e-75    FAIL !!!!      
+  [Low4/32]Gap-16:A                 R= +10.1  p =  9.3e-9   very suspicious  
+  [Low4/32]Gap-16:B                 R= +10.2  p =  2.2e-8   very suspicious  
+  [Low4/64]FPF-14+6/16:(1,14-11)    R= +16.1  p =  7.1e-8   mildly suspicious
+  [Low8/32]Gap-16:A                 R= +37.7  p =  5.5e-28    FAIL !!!       
+  [Low8/32]Gap-16:B                 R= +37.2  p =  4.2e-24    FAIL !!        
+  [Low8/64]DC6-9x1Bytes-1           R= +15.8  p =  1.3e-6   very suspicious  
+  ...and 80 test result(s) without anomalies
+
