@@ -9,7 +9,7 @@ export LC_ALL=C
 TF=0
 TE=1
 TLMIN=64KB
-TLMAX=64KB
+TLMAX=1MB
 
 OUTPUT_DIR=results
 DATETIME=$(date -u +'%Y%m%dT%H%M%S')
