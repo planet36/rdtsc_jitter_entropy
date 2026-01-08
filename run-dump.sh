@@ -8,7 +8,7 @@ export LC_ALL=C
 
 TF=0
 TE=1
-TLMIN=32KB
+TLMIN=64KB
 TLMAX=64KB
 
 OUTPUT_DIR=results
