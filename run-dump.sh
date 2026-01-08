@@ -7,7 +7,7 @@ renice --priority 19 --pid $$ > /dev/null
 export LC_ALL=C
 
 TF=0
-TE=0
+TE=1
 TLMIN=32KB
 TLMAX=64KB
 
