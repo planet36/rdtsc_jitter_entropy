@@ -44,6 +44,8 @@ do
     wait
 done
 
+./dump -f rdseed | RNG_test stdin64 -tf $TF -te $TE -tlmin $TLMIN -tlmax $TLMAX -multithreaded > "${OUTPUT_DIR}/RNG_test.rdseed.${DATETIME}.txt"
+
 echo
 echo "Result files which do NOT contain \"FAIL\":"
 

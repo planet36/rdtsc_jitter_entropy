@@ -24,6 +24,27 @@
 #include <string_view>
 #include <unistd.h>
 
+#include <immintrin.h>
+
+static unsigned long long
+rdseed64()
+{
+    unsigned long long ret = 0;
+    static_assert(sizeof(ret) * 8 == 64);
+    while (_rdseed64_step(&ret) == 0)
+    {}
+    return ret;
+}
+
+/// The raison d'etre of this wrapper is to have the same signature as
+/// rdtsc_jitter_entropy.
+static inline uint64_t
+rdseed64_wrapper([[maybe_unused]] const unsigned int k,
+        [[maybe_unused]] const bool use_pause = false)
+{
+    return rdseed64();
+}
+
 #include <fmt/format.h>
 
 #define nl (void)putchar('\n')
@@ -78,8 +99,8 @@ print_usage()
     nl;
 
     fmt::println("-f  FUNC");
-    fmt::println("    Specify which RDTSC jitter entropy function should be used.");
-    fmt::println("    FUNC is one of: rdtsc, rdtscp");
+    fmt::println("    Specify which entropy function should be used.");
+    fmt::println("    FUNC is one of: rdtsc, rdtscp, rdseed");
     fmt::println("    (default: {:?})", "rdtsc");
     nl;
 
@@ -154,6 +175,10 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
                 else if (optarg == "rdtscp"s)
                 {
                     func = rdtscp_jitter_entropy;
+                }
+                else if (optarg == "rdseed"s)
+                {
+                    func = rdseed64_wrapper;
                 }
                 else
                 {
