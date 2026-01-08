@@ -9,6 +9,7 @@
 * https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 */
 
+#include "rdrand.h"
 #include "rdtsc_jitter_entropy.hpp"
 
 #include <cassert>
@@ -18,23 +19,12 @@
 #include <err.h>
 #include <fmt/format.h>
 #include <functional>
-#include <immintrin.h>
 #include <limits>
 #include <numeric>
 #include <stdexcept>
 #include <string>
 #include <string_view>
 #include <unistd.h>
-
-static unsigned long long
-rdseed64()
-{
-    unsigned long long ret = 0;
-    static_assert(sizeof(ret) * 8 == 64);
-    while (_rdseed64_step(&ret) == 0)
-    {}
-    return ret;
-}
 
 /// The raison d'etre of this wrapper is to have the same signature as
 /// rdtsc_jitter_entropy.
