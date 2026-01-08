@@ -16,15 +16,15 @@
 #include <cstdint>
 #include <cstdlib>
 #include <err.h>
+#include <fmt/format.h>
 #include <functional>
+#include <immintrin.h>
 #include <limits>
 #include <numeric>
 #include <stdexcept>
 #include <string>
 #include <string_view>
 #include <unistd.h>
-
-#include <immintrin.h>
 
 static unsigned long long
 rdseed64()
@@ -44,8 +44,6 @@ rdseed64_wrapper([[maybe_unused]] const unsigned int k,
 {
     return rdseed64();
 }
-
-#include <fmt/format.h>
 
 #define nl (void)putchar('\n')
 
