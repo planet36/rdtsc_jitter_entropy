@@ -1,0 +1,57 @@
+RNG_test using PractRand version 0.95-planet36
+RNG = RNG_stdin64, seed = unknown
+test set = expanded, folding = none
+
+rng=RNG_stdin64, seed=unknown
+length= 64 kibibytes (2^16 bytes), time= 0.1 seconds
+  Test Name                         Raw       Processed     Evaluation
+  BCFN(0+0,13-9,T)                  R=+172.6  p =  6.6e-40    FAIL !!!       
+  BCFN(0+1,13-9,T)                  R= +61.1  p =  7.5e-15    FAIL !         
+  BCFN(0+2,13-9,T)                  R= +83.2  p =  8.0e-20    FAIL !!        
+  BCFN(0+3,13-9,T)                  R= +28.7  p =  1.4e-7   very suspicious  
+  BCFN(0+4,13-9,T)                  R= +44.4  p =  2.3e-11    FAIL           
+  mod3n(0):(0,9-6)                  R= +17.9  p =  5.9e-7   suspicious       
+  mod3n(0):(1,9-6)                  R= +37.1  p =  1.5e-13    FAIL           
+  DC7-9x1Bytes-1:even               R= +76.0  p =  1.0e-37    FAIL !!!       
+  DC7-9x1Bytes-1:odd                R= +76.2  p =  8.1e-38    FAIL !!!       
+  DC7-9x1Bytes-1:both               R= +76.8  p =  3.2e-38    FAIL !!!       
+  DC7-9x1Bytes-1:indep              R=+168.5  p =  0          FAIL !!!!!!!!  
+  DC7-6x2Bytes-1:even               R= +80.1  p =  2.5e-33    FAIL !!!       
+  DC7-6x2Bytes-1:odd                R= +79.4  p =  4.7e-33    FAIL !!!       
+  DC7-6x2Bytes-1:both               R= +63.6  p =  2.1e-32    FAIL !!!       
+  DC7-6x2Bytes-1:indep              R=+147.5  p =  0          FAIL !!!!!!!!  
+  DC7-5x4Bytes-1:even               R= +77.4  p =  4.6e-41    FAIL !!!       
+  DC7-5x4Bytes-1:odd                R=+111.6  p =  4.8e-59    FAIL !!!!      
+  DC7-5x4Bytes-1:both               R= +91.0  p =  8.2e-49    FAIL !!!!      
+  DC7-5x4Bytes-1:indep              R=+225.1  p =  0          FAIL !!!!!!!!  
+  FPF-14+6/64:(4,14-11)             R= +59.7  p =  7.7e-27    FAIL !!        
+  FPF-14+6/64:all                   R= +22.8  p =  1.5e-14    FAIL           
+  FPF-14+6/32:(1,14-8)              R= +93.5  p =  2.3e-67    FAIL !!!!      
+  FPF-14+6/32:(2,14-9)              R= +68.2  p =  2.9e-43    FAIL !!!       
+  FPF-14+6/32:(3,14-10)             R= +47.1  p =  1.2e-25    FAIL !!        
+  FPF-14+6/32:(4,14-11)             R= +25.7  p =  5.0e-12   VERY SUSPICIOUS 
+  FPF-14+6/32:(5,14-11)             R= +35.5  p =  2.7e-16    FAIL           
+  FPF-14+6/32:all                   R=+105.6  p =  1.1e-69    FAIL !!!!      
+  FPF-14+6/16:(0,14-7)              R=+270.5  p =  3.8e-215   FAIL !!!!!!    
+  FPF-14+6/16:(1,14-8)              R=+212.2  p =  9.2e-153   FAIL !!!!!     
+  FPF-14+6/16:(2,14-8)              R=+267.9  p =  8.1e-193   FAIL !!!!!!    
+  FPF-14+6/16:(3,14-9)              R=+184.2  p =  3.0e-116   FAIL !!!!!     
+  FPF-14+6/16:(4,14-10)             R=+117.0  p =  8.5e-63    FAIL !!!!      
+  FPF-14+6/16:(5,14-11)             R= +89.7  p =  6.1e-40    FAIL !!!       
+  FPF-14+6/16:(6,14-11)             R= +48.4  p =  6.0e-22    FAIL !         
+  FPF-14+6/16:all                   R=+494.4  p =  5.5e-338   FAIL !!!!!!!   
+  FPF-14+6/16:cross                 R= +32.6  p =  1.4e-24    FAIL !!        
+  FPF-14+6/4:(0,14-5)               R=+566.9  p =  7.2e-470   FAIL !!!!!!!   
+  FPF-14+6/4:(1,14-6)               R=+409.5  p =  2.0e-313   FAIL !!!!!!    
+  FPF-14+6/4:(2,14-7)               R=+291.0  p =  2.1e-231   FAIL !!!!!!    
+  FPF-14+6/4:(3,14-8)               R=+201.6  p =  4.0e-145   FAIL !!!!!     
+  FPF-14+6/4:(4,14-8)               R=+168.1  p =  5.3e-121   FAIL !!!!!     
+  FPF-14+6/4:(5,14-9)               R=+105.7  p =  7.8e-67    FAIL !!!!      
+  FPF-14+6/4:(6,14-10)              R= +68.4  p =  5.8e-37    FAIL !!!       
+  FPF-14+6/4:(8,14-11)              R= +71.5  p =  5.1e-32    FAIL !!!       
+  FPF-14+6/4:all                    R=+804.3  p =  6.4e-657   FAIL !!!!!!!   
+  FPF-14+6/4:cross                  R= +37.7  p =  1.2e-27    FAIL !!        
+  Gap-16:A                          R=+788.2  p =  2.0e-622   FAIL !!!!!!!   
+  Gap-16:B                          R= +1647  p =  1e-1124    FAIL !!!!!!!!  
+  ...and 20 test result(s) without anomalies
+

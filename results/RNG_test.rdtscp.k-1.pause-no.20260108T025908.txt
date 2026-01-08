@@ -1,0 +1,26 @@
+RNG_test using PractRand version 0.95-planet36
+RNG = RNG_stdin64, seed = unknown
+test set = expanded, folding = none
+
+rng=RNG_stdin64, seed=unknown
+length= 64 kibibytes (2^16 bytes), time= 0.1 seconds
+  no anomalies in 68 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 128 kibibytes (2^17 bytes), time= 0.7 seconds
+  no anomalies in 75 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 256 kibibytes (2^18 bytes), time= 1.3 seconds
+  no anomalies in 83 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 512 kibibytes (2^19 bytes), time= 1.9 seconds
+  Test Name                         Raw       Processed     Evaluation
+  FPF-14+6/4:all                    R=  +5.5  p =  1.6e-4   unusual          
+  ...and 89 test result(s) without anomalies
+
+rng=RNG_stdin64, seed=unknown
+length= 1 mebibyte (2^20 bytes), time= 2.6 seconds
+  no anomalies in 98 test result(s)
+

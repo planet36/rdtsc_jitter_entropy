@@ -1,0 +1,31 @@
+RNG_test using PractRand version 0.95-planet36
+RNG = RNG_stdin64, seed = unknown
+test set = expanded, folding = none
+
+rng=RNG_stdin64, seed=unknown
+length= 64 kibibytes (2^16 bytes), time= 0.1 seconds
+  Test Name                         Raw       Processed     Evaluation
+  BCFN(0+0,13-9,T)                  R=+343.3  p =  3.0e-78    FAIL !!!!      
+  BCFN(0+1,13-9,T)                  R=+272.0  p =  3.0e-62    FAIL !!!!      
+  BCFN(0+2,13-9,T)                  R= +35.9  p =  3.5e-9    VERY SUSPICIOUS 
+  BCFN(0+3,13-9,T)                  R= +37.2  p =  1.7e-9    VERY SUSPICIOUS 
+  BCFN(0+4,13-9,T)                  R= +28.4  p =  1.2e-7   very suspicious  
+  mod3n(0):(0,9-6)                  R= +10.4  p =  2.2e-4   unusual          
+  BRank(18):128(2)                  R=+642.3  p~=  2.2e-194   FAIL !!!!!!    
+  BRank(18):256(1)                  R=+906.2  p~=  7.9e-274   FAIL !!!!!!    
+  DC7-9x1Bytes-1:even               R= +85.7  p =  1.6e-42    FAIL !!!       
+  DC7-9x1Bytes-1:odd                R= +64.8  p =  3.6e-32    FAIL !!!       
+  DC7-9x1Bytes-1:both               R=+115.6  p =  2.0e-57    FAIL !!!!      
+  DC7-9x1Bytes-1:indep              R=+166.6  p =  0          FAIL !!!!!!!!  
+  DC7-6x2Bytes-1:even               R= +86.3  p =  7.9e-36    FAIL !!!       
+  DC7-6x2Bytes-1:odd                R=+101.0  p =  8.1e-42    FAIL !!!       
+  DC7-6x2Bytes-1:both               R= +98.2  p =  7.4e-50    FAIL !!!!      
+  DC7-6x2Bytes-1:indep              R=+173.4  p =  0          FAIL !!!!!!!!  
+  DC7-5x4Bytes-1:even               R=+118.1  p =  2.0e-62    FAIL !!!!      
+  DC7-5x4Bytes-1:odd                R=+183.5  p =  9.4e-97    FAIL !!!!!     
+  DC7-5x4Bytes-1:both               R=+142.2  p =  4.7e-76    FAIL !!!!      
+  DC7-5x4Bytes-1:indep              R=+361.1  p =  0          FAIL !!!!!!!!  
+  Gap-16:A                          R=+244.7  p =  5.3e-193   FAIL !!!!!!    
+  Gap-16:B                          R=+344.4  p =  2.3e-235   FAIL !!!!!!    
+  ...and 46 test result(s) without anomalies
+

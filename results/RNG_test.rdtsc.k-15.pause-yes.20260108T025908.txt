@@ -1,0 +1,30 @@
+RNG_test using PractRand version 0.95-planet36
+RNG = RNG_stdin64, seed = unknown
+test set = expanded, folding = none
+
+rng=RNG_stdin64, seed=unknown
+length= 64 kibibytes (2^16 bytes), time= 0.1 seconds
+  Test Name                         Raw       Processed     Evaluation
+  BCFN(0+0,13-9,T)                  R= +15.7  p =  1.2e-4   unusual          
+  BCFN(0+1,13-9,T)                  R= +26.1  p =  5.6e-7   very suspicious  
+  BCFN(0+2,13-9,T)                  R= +55.3  p =  1.5e-13    FAIL           
+  BCFN(0+3,13-9,T)                  R=+272.3  p =  2.6e-62    FAIL !!!!      
+  BCFN(0+4,13-9,T)                  R=+238.7  p =  1.3e-56    FAIL !!!!      
+  BRank(18):128(2)                  R=+113.0  p~=  4.9e-35    FAIL !!!       
+  BRank(18):256(1)                  R=+389.6  p~=  2.6e-118   FAIL !!!!!     
+  DC7-9x1Bytes-1:even               R= +32.9  p =  2.0e-16    FAIL !         
+  DC7-9x1Bytes-1:odd                R= +36.9  p =  2.2e-18    FAIL !         
+  DC7-9x1Bytes-1:both               R= +14.7  p =  1.8e-7   very suspicious  
+  DC7-9x1Bytes-1:indep              R= +74.7  p =  0          FAIL !!!!!!!!  
+  DC7-6x2Bytes-1:even               R= +21.6  p =  1.5e-9    VERY SUSPICIOUS 
+  DC7-6x2Bytes-1:odd                R= +23.8  p =  2.1e-10   VERY SUSPICIOUS 
+  DC7-6x2Bytes-1:both               R= +20.5  p =  1.1e-10   VERY SUSPICIOUS 
+  DC7-6x2Bytes-1:indep              R= +40.5  p =  0          FAIL !!!!!!!!  
+  DC7-5x4Bytes-1:even               R= +33.4  p =  6.1e-18    FAIL !         
+  DC7-5x4Bytes-1:odd                R= +45.4  p =  2.8e-24    FAIL !!        
+  DC7-5x4Bytes-1:both               R= +41.0  p =  3.1e-22    FAIL !!        
+  DC7-5x4Bytes-1:indep              R= +91.9  p =  0          FAIL !!!!!!!!  
+  Gap-16:A                          R= +20.0  p =  1.7e-15    FAIL !         
+  Gap-16:B                          R= +10.1  p =  3.5e-7   very suspicious  
+  ...and 47 test result(s) without anomalies
+

@@ -1,0 +1,24 @@
+RNG_test using PractRand version 0.95-planet36
+RNG = RNG_stdin64, seed = unknown
+test set = expanded, folding = none
+
+rng=RNG_stdin64, seed=unknown
+length= 64 kibibytes (2^16 bytes), time= 0.1 seconds
+  no anomalies in 68 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 128 kibibytes (2^17 bytes), time= 0.6 seconds
+  no anomalies in 75 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 256 kibibytes (2^18 bytes), time= 1.1 seconds
+  no anomalies in 83 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 512 kibibytes (2^19 bytes), time= 1.7 seconds
+  no anomalies in 90 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 1 mebibyte (2^20 bytes), time= 2.4 seconds
+  no anomalies in 98 test result(s)
+
