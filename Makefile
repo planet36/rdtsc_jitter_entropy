@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Steven Ward
 # SPDX-License-Identifier: OSL-3.0
 
-export LC_ALL := C
+export LC_ALL = C
 
 CPPFLAGS = -MMD -MP
 CPPFLAGS += -Iinclude
@@ -17,9 +17,9 @@ CXXFLAGS += -Wno-unused-function
 LDLIBS = -lfmt
 LDLIBS += `pkg-config --libs benchmark`
 
-SRCS := $(wildcard *.cpp)
-DEPS := $(SRCS:.cpp=.d)
-BINS := $(basename $(SRCS))
+SRCS = $(wildcard *.cpp)
+DEPS = $(SRCS:.cpp=.d)
+BINS = $(basename $(SRCS))
 
 all: $(BINS)
 
