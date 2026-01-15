@@ -10,12 +10,11 @@ CXXFLAGS = -std=c++26
 CXXFLAGS += -pipe -Wall -Wextra -Wpedantic -Wfatal-errors
 CXXFLAGS += -O3 -flto=auto -march=native -fno-math-errno
 CXXFLAGS += -Wno-unused-function
-
 #CXXFLAGS += -march=raptorlake
 
-#LDFLAGS +=
+#LDFLAGS =
 
-LDLIBS += -lfmt
+LDLIBS = -lfmt
 LDLIBS += `pkg-config --libs benchmark`
 
 SRCS := $(wildcard *.cpp)
