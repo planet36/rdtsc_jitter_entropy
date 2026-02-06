@@ -31,12 +31,8 @@ https://aka.ms/win10rng
 #include <numeric> // std::gcd
 #endif
 #include <bit> // std::rotl
-#include <immintrin.h>
 #include <limits>
-
-#if !defined(__SSE2__)
-#error "SSE2 instruction set required"
-#endif
+#include <thread>
 
 /// Get entropy from TSC jitter
 /**
@@ -76,7 +72,7 @@ rdtsc_jitter_entropy(const unsigned int k)
     {
         //_mm_clflush(&entropy);
 
-        _mm_pause();
+        std::this_thread::yield();
 
         const uint64_t tsc = rdtsc();
         entropy = std::rotl(entropy, static_cast<int>(r)) ^ tsc;
@@ -123,7 +119,7 @@ rdtscp_jitter_entropy(const unsigned int k)
     {
         //_mm_clflush(&entropy);
 
-        _mm_pause();
+        std::this_thread::yield();
 
         const uint64_t tsc = rdtscp();
         entropy = std::rotl(entropy, static_cast<int>(r)) ^ tsc;
