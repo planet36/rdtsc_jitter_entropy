@@ -69,14 +69,14 @@ rdtsc_jitter_entropy(const unsigned int k, const bool use_pause = false)
     assert(N > 0);
 #endif
 
-    uint64_t entropy{};
+    uint64_t entropy = rdtsc();
 
-    // N times
-    for (unsigned int i = 0; i < N; ++i)
+    // N-1 times
+    for (unsigned int i = 1; i < N; ++i)
     {
         //_mm_clflush(&entropy);
 
-        if ((i != 0) && use_pause)
+        if (use_pause)
             _mm_pause();
 
         const uint64_t tsc = rdtsc();
@@ -117,14 +117,14 @@ rdtscp_jitter_entropy(const unsigned int k, const bool use_pause = false)
     assert(N > 0);
 #endif
 
-    uint64_t entropy{};
+    uint64_t entropy = rdtscp();
 
-    // N times
-    for (unsigned int i = 0; i < N; ++i)
+    // N-1 times
+    for (unsigned int i = 1; i < N; ++i)
     {
         //_mm_clflush(&entropy);
 
-        if ((i != 0) && use_pause)
+        if (use_pause)
             _mm_pause();
 
         const uint64_t tsc = rdtscp();
