@@ -46,7 +46,7 @@ https://aka.ms/win10rng
 */
 [[gnu::optimize("O1")]]
 static uint64_t
-rdtsc_jitter_entropy(const unsigned int k, const bool use_pause = false)
+rdtsc_jitter_entropy(const unsigned int k)
 {
     constexpr unsigned int L = std::numeric_limits<uint64_t>::digits;
 #if defined(DEBUG)
@@ -76,8 +76,7 @@ rdtsc_jitter_entropy(const unsigned int k, const bool use_pause = false)
     {
         //_mm_clflush(&entropy);
 
-        if (use_pause)
-            _mm_pause();
+        _mm_pause();
 
         const uint64_t tsc = rdtsc();
         entropy = std::rotl(entropy, static_cast<int>(r)) ^ tsc;
@@ -94,7 +93,7 @@ rdtsc_jitter_entropy(const unsigned int k, const bool use_pause = false)
 */
 [[gnu::optimize("O1")]]
 static uint64_t
-rdtscp_jitter_entropy(const unsigned int k, const bool use_pause = false)
+rdtscp_jitter_entropy(const unsigned int k)
 {
     constexpr unsigned int L = std::numeric_limits<uint64_t>::digits;
 #if defined(DEBUG)
@@ -124,8 +123,7 @@ rdtscp_jitter_entropy(const unsigned int k, const bool use_pause = false)
     {
         //_mm_clflush(&entropy);
 
-        if (use_pause)
-            _mm_pause();
+        _mm_pause();
 
         const uint64_t tsc = rdtscp();
         entropy = std::rotl(entropy, static_cast<int>(r)) ^ tsc;
