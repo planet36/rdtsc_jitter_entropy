@@ -29,8 +29,7 @@
 /// The raison d'etre of this wrapper is to have the same signature as
 /// rdtsc_jitter_entropy.
 static inline uint64_t
-rdseed64_wrapper([[maybe_unused]] const unsigned int k,
-        [[maybe_unused]] const bool use_pause = false)
+rdseed64_wrapper([[maybe_unused]] const unsigned int k)
 {
     return rdseed64();
 }
@@ -38,7 +37,7 @@ rdseed64_wrapper([[maybe_unused]] const unsigned int k,
 #define nl (void)putchar('\n')
 
 inline constexpr std::string_view program_author = "Steven Ward";
-inline constexpr std::string_view program_version = "2026-01-07";
+inline constexpr std::string_view program_version = "2026-02-17";
 inline constexpr std::string_view program_license = "OSL-3.0";
 
 // Globals
@@ -96,10 +95,6 @@ print_usage()
     fmt::println("    Specify the estimated minimum entropy bits per sample.");
     fmt::println("    (default: {})", default_k);
     nl;
-
-    fmt::println("-p");
-    fmt::println("    Call _mm_pause() between RDTSC calls.");
-    nl;
 }
 
 int
@@ -109,14 +104,13 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
     // {{{ options
     unsigned long long limit_bytes = 0;
-    std::function<uint64_t(const unsigned int, const bool)> func{rdtsc_jitter_entropy};
+    std::function<uint64_t(const unsigned int)> func{rdtsc_jitter_entropy};
     unsigned int k = default_k;
-    bool use_pause = false;
     // }}}
 
     // {{{ process options
     {
-        const char* short_options = "+Vhl:f:k:p";
+        const char* short_options = "+Vhl:f:k:";
         int c;
         while ((c = getopt(argc, argv, short_options)) != -1)
         {
@@ -194,10 +188,6 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
                 }
                 break;
 
-            case 'p':
-                use_pause = true;
-                break;
-
             default:
                 std::exit(EXIT_FAILURE);
             }
@@ -231,7 +221,7 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
             {
                 for (size_t i = 0; i < buf_num_elems; ++i)
                 {
-                    buf[i] = func(k, use_pause);
+                    buf[i] = func(k);
                 }
 
                 (void)::write(STDOUT_FILENO, &buf[0], sizeof(buf));
@@ -246,7 +236,7 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
             {
                 for (size_t i = 0; i < buf_num_elems; ++i)
                 {
-                    buf[i] = func(k, use_pause);
+                    buf[i] = func(k);
                 }
 
                 (void)::write(STDOUT_FILENO, &buf[0], sizeof(buf));

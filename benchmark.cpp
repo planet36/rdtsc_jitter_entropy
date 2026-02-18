@@ -7,8 +7,8 @@
 #include <functional>
 
 void BM_rdtsc_jitter_entropy(benchmark::State& BM_state,
-        const std::function<uint64_t(const unsigned int, const bool)>& fn,
-        const unsigned int k, const bool use_pause)
+        const std::function<uint64_t(const unsigned int)>& fn,
+        const unsigned int k)
 {
     // Perform setup here
 
@@ -16,7 +16,7 @@ void BM_rdtsc_jitter_entropy(benchmark::State& BM_state,
     {
         // This code gets timed
 
-        benchmark::DoNotOptimize(fn(k, use_pause));
+        benchmark::DoNotOptimize(fn(k));
     }
 }
 
@@ -90,17 +90,14 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
     if (num_threads == 1)
     {
-        for (const bool use_pause : {false, true})
+        for (unsigned int k = 1; k <= 9; k += 2)
         {
-            for (unsigned int k = 1; k <= 9; k += 2)
-            {
-                benchmark::RegisterBenchmark(
-                        fmt::format("rdtsc_jitter_entropy(k={},use_pause={})", k, use_pause),
-                        BM_rdtsc_jitter_entropy, rdtsc_jitter_entropy, k, use_pause);
-                benchmark::RegisterBenchmark(
-                        fmt::format("rdtscp_jitter_entropy(k={},use_pause={})", k, use_pause),
-                        BM_rdtsc_jitter_entropy, rdtscp_jitter_entropy, k, use_pause);
-            }
+            benchmark::RegisterBenchmark(
+                    fmt::format("rdtsc_jitter_entropy(k={})", k),
+                    BM_rdtsc_jitter_entropy, rdtsc_jitter_entropy, k);
+            benchmark::RegisterBenchmark(
+                    fmt::format("rdtscp_jitter_entropy(k={})", k),
+                    BM_rdtsc_jitter_entropy, rdtscp_jitter_entropy, k);
         }
 
         benchmark::RegisterBenchmark("rdrand64", BM_rd_rand_seed<uint64_t>, rdrand64);
@@ -108,17 +105,14 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     }
     else
     {
-        for (const bool use_pause : {false, true})
+        for (unsigned int k = 1; k <= 9; k += 2)
         {
-            for (unsigned int k = 1; k <= 9; k += 2)
-            {
-                benchmark::RegisterBenchmark(
-                        fmt::format("rdtsc_jitter_entropy(k={},use_pause={})", k, use_pause),
-                        BM_rdtsc_jitter_entropy, rdtsc_jitter_entropy, k, use_pause)->Threads(num_threads);
-                benchmark::RegisterBenchmark(
-                        fmt::format("rdtscp_jitter_entropy(k={},use_pause={})", k, use_pause),
-                        BM_rdtsc_jitter_entropy, rdtscp_jitter_entropy, k, use_pause)->Threads(num_threads);
-            }
+            benchmark::RegisterBenchmark(
+                    fmt::format("rdtsc_jitter_entropy(k={})", k),
+                    BM_rdtsc_jitter_entropy, rdtsc_jitter_entropy, k)->Threads(num_threads);
+            benchmark::RegisterBenchmark(
+                    fmt::format("rdtscp_jitter_entropy(k={})", k),
+                    BM_rdtsc_jitter_entropy, rdtscp_jitter_entropy, k)->Threads(num_threads);
         }
 
         benchmark::RegisterBenchmark("rdrand64", BM_rd_rand_seed<uint64_t>, rdrand64)->Threads(num_threads);
