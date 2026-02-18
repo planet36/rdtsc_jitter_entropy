@@ -32,6 +32,8 @@ kill_jobs()
 
 trap 'kill_jobs' INT
 
+./dump -f rdseed | RNG_test stdin64 -tf $TF -te $TE -tlmin $TLMIN -tlmax $TLMAX -multithreaded > "${OUTPUT_DIR}/RNG_test.rdseed.${DATETIME}.txt"
+
 for K in $(seq 1 2 31)
 do
     echo "K=$K"
@@ -43,8 +45,6 @@ do
 
     wait
 done
-
-./dump -f rdseed | RNG_test stdin64 -tf $TF -te $TE -tlmin $TLMIN -tlmax $TLMAX -multithreaded > "${OUTPUT_DIR}/RNG_test.rdseed.${DATETIME}.txt"
 
 echo
 echo "Result files which do NOT contain \"FAIL\":"

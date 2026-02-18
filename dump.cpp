@@ -150,17 +150,17 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
                 break;
 
             case 'f':
-                if (optarg == "rdtsc"s)
+                if (optarg == "rdseed"s)
+                {
+                    func = rdseed64_wrapper;
+                }
+                else if (optarg == "rdtsc"s)
                 {
                     func = rdtsc_jitter_entropy;
                 }
                 else if (optarg == "rdtscp"s)
                 {
                     func = rdtscp_jitter_entropy;
-                }
-                else if (optarg == "rdseed"s)
-                {
-                    func = rdseed64_wrapper;
                 }
                 else
                 {
