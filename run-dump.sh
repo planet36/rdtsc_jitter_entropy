@@ -32,7 +32,7 @@ kill_jobs()
 
 trap 'kill_jobs' INT
 
-for K in $(seq 1 2 15)
+for K in $(seq 1 2 31)
 do
     echo "K=$K"
 
