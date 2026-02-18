@@ -38,10 +38,8 @@ for K in $(seq 1 2 31)
 do
     echo "K=$K"
 
-    ./dump -f rdtsc  -k "$K"    | RNG_test stdin64 -tf $TF -te $TE -tlmin $TLMIN -tlmax $TLMAX -multithreaded > "${OUTPUT_DIR}/RNG_test.rdtsc.k-$K.pause-no.${DATETIME}.txt" &
-    ./dump -f rdtscp -k "$K"    | RNG_test stdin64 -tf $TF -te $TE -tlmin $TLMIN -tlmax $TLMAX -multithreaded > "${OUTPUT_DIR}/RNG_test.rdtscp.k-$K.pause-no.${DATETIME}.txt" &
-    ./dump -f rdtsc  -k "$K" -p | RNG_test stdin64 -tf $TF -te $TE -tlmin $TLMIN -tlmax $TLMAX -multithreaded > "${OUTPUT_DIR}/RNG_test.rdtsc.k-$K.pause-yes.${DATETIME}.txt" &
-    ./dump -f rdtscp -k "$K" -p | RNG_test stdin64 -tf $TF -te $TE -tlmin $TLMIN -tlmax $TLMAX -multithreaded > "${OUTPUT_DIR}/RNG_test.rdtscp.k-$K.pause-yes.${DATETIME}.txt" &
+    ./dump -f rdtsc  -k "$K" | RNG_test stdin64 -tf $TF -te $TE -tlmin $TLMIN -tlmax $TLMAX -multithreaded > "${OUTPUT_DIR}/RNG_test.rdtsc.k-$K.${DATETIME}.txt" &
+    ./dump -f rdtscp -k "$K" | RNG_test stdin64 -tf $TF -te $TE -tlmin $TLMIN -tlmax $TLMAX -multithreaded > "${OUTPUT_DIR}/RNG_test.rdtscp.k-$K.${DATETIME}.txt" &
 
     wait
 done
