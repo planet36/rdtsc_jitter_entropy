@@ -100,7 +100,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
                     BM_rdtsc_jitter_entropy, rdtscp_jitter_entropy, k);
         }
 
-        benchmark::RegisterBenchmark("rdrand64", BM_rd_rand_seed<uint64_t>, rdrand64);
         benchmark::RegisterBenchmark("rdseed64", BM_rd_rand_seed<uint64_t>, rdseed64);
     }
     else
@@ -115,7 +114,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
                     BM_rdtsc_jitter_entropy, rdtscp_jitter_entropy, k)->Threads(num_threads);
         }
 
-        benchmark::RegisterBenchmark("rdrand64", BM_rd_rand_seed<uint64_t>, rdrand64)->Threads(num_threads);
         benchmark::RegisterBenchmark("rdseed64", BM_rd_rand_seed<uint64_t>, rdseed64)->Threads(num_threads);
     }
 
