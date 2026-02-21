@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 # SPDX-FileCopyrightText: Steven Ward
-# SPDX-License-Identifier: OSL-3.0
+# SPDX-License-Identifier: MPL-2.0
 
 command grep median "$1" |
     sed -r -e 's|(/threads:[0-9]+)?_median||' |

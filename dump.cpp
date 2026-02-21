@@ -1,5 +1,5 @@
 // SPDX-FileCopyrightText: Steven Ward
-// SPDX-License-Identifier: OSL-3.0
+// SPDX-License-Identifier: MPL-2.0
 
 /**
 * This program will dump bytes to stdout (as long as stdout does not refer to a
@@ -38,7 +38,7 @@ rdseed64_wrapper([[maybe_unused]] const unsigned int k)
 
 inline constexpr std::string_view program_author = "Steven Ward";
 inline constexpr std::string_view program_version = "2026-02-17";
-inline constexpr std::string_view program_license = "OSL-3.0";
+inline constexpr std::string_view program_license = "MPL-2.0";
 
 // Globals
 
