@@ -9,7 +9,7 @@ NUM_THREADS="$(nproc --ignore=1)"
 export NUM_THREADS
 
 # Should be an odd number for simpler median
-BENCHMARK_REPS=7
+BENCHMARK_REPS=5
 
 OUTPUT_DIR=results
 DATETIME=$(date -u +'%Y%m%dT%H%M%S')
