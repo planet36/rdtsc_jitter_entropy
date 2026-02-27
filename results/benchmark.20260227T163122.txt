@@ -1,0 +1,56 @@
+2026-02-27T11:31:22-05:00
+Running ./benchmark
+Run on (8 X 2419.2 MHz CPU s)
+CPU Caches:
+  L1 Data 48 KiB (x8)
+  L1 Instruction 32 KiB (x8)
+  L2 Unified 2048 KiB (x8)
+  L3 Unified 36864 KiB (x8)
+Load Average: 1.21, 0.69, 0.65
+--------------------------------------------------------------------------------------
+Benchmark                                            Time             CPU   Iterations
+--------------------------------------------------------------------------------------
+rdtsc_jitter_entropy(k=1)/threads:7_mean         15239 ns        13593 ns            5
+rdtsc_jitter_entropy(k=1)/threads:7_median       15227 ns        13448 ns            5
+rdtsc_jitter_entropy(k=1)/threads:7_stddev        1204 ns          290 ns            5
+rdtsc_jitter_entropy(k=1)/threads:7_cv            7.90 %          2.14 %             5
+rdtsc_jitter_entropy(k=9)/threads:7_mean          1885 ns         1567 ns            5
+rdtsc_jitter_entropy(k=9)/threads:7_median        1917 ns         1558 ns            5
+rdtsc_jitter_entropy(k=9)/threads:7_stddev         174 ns         42.5 ns            5
+rdtsc_jitter_entropy(k=9)/threads:7_cv            9.23 %          2.71 %             5
+rdtsc_jitter_entropy(k=7)/threads:7_mean          2269 ns         2010 ns            5
+rdtsc_jitter_entropy(k=7)/threads:7_median        2233 ns         1989 ns            5
+rdtsc_jitter_entropy(k=7)/threads:7_stddev         243 ns         60.0 ns            5
+rdtsc_jitter_entropy(k=7)/threads:7_cv           10.71 %          2.98 %             5
+rdtscp_jitter_entropy(k=5)/threads:7_mean         3311 ns         2758 ns            5
+rdtscp_jitter_entropy(k=5)/threads:7_median       3337 ns         2703 ns            5
+rdtscp_jitter_entropy(k=5)/threads:7_stddev        420 ns          113 ns            5
+rdtscp_jitter_entropy(k=5)/threads:7_cv          12.68 %          4.11 %             5
+rdtsc_jitter_entropy(k=3)/threads:7_mean          5279 ns         4555 ns            5
+rdtsc_jitter_entropy(k=3)/threads:7_median        4826 ns         4508 ns            5
+rdtsc_jitter_entropy(k=3)/threads:7_stddev         837 ns          223 ns            5
+rdtsc_jitter_entropy(k=3)/threads:7_cv           15.86 %          4.90 %             5
+rdseed64/threads:7_mean                          12286 ns        11470 ns            5
+rdseed64/threads:7_median                        12374 ns        11151 ns            5
+rdseed64/threads:7_stddev                          173 ns          646 ns            5
+rdseed64/threads:7_cv                             1.41 %          5.63 %             5
+rdtscp_jitter_entropy(k=7)/threads:7_mean         2222 ns         2007 ns            5
+rdtscp_jitter_entropy(k=7)/threads:7_median       2196 ns         2004 ns            5
+rdtscp_jitter_entropy(k=7)/threads:7_stddev        186 ns         46.9 ns            5
+rdtscp_jitter_entropy(k=7)/threads:7_cv           8.36 %          2.33 %             5
+rdtscp_jitter_entropy(k=3)/threads:7_mean         5306 ns         4678 ns            5
+rdtscp_jitter_entropy(k=3)/threads:7_median       5537 ns         4684 ns            5
+rdtscp_jitter_entropy(k=3)/threads:7_stddev        349 ns          108 ns            5
+rdtscp_jitter_entropy(k=3)/threads:7_cv           6.58 %          2.31 %             5
+rdtscp_jitter_entropy(k=9)/threads:7_mean         1868 ns         1599 ns            5
+rdtscp_jitter_entropy(k=9)/threads:7_median       1927 ns         1599 ns            5
+rdtscp_jitter_entropy(k=9)/threads:7_stddev       83.3 ns         39.4 ns            5
+rdtscp_jitter_entropy(k=9)/threads:7_cv           4.46 %          2.46 %             5
+rdtsc_jitter_entropy(k=5)/threads:7_mean          3136 ns         2683 ns            5
+rdtsc_jitter_entropy(k=5)/threads:7_median        2999 ns         2665 ns            5
+rdtsc_jitter_entropy(k=5)/threads:7_stddev         457 ns          144 ns            5
+rdtsc_jitter_entropy(k=5)/threads:7_cv           14.58 %          5.35 %             5
+rdtscp_jitter_entropy(k=1)/threads:7_mean        16465 ns        14029 ns            5
+rdtscp_jitter_entropy(k=1)/threads:7_median      16488 ns        14105 ns            5
+rdtscp_jitter_entropy(k=1)/threads:7_stddev        911 ns          363 ns            5
+rdtscp_jitter_entropy(k=1)/threads:7_cv           5.53 %          2.59 %             5

@@ -1,0 +1,22 @@
+RNG_test using PractRand version 0.95-planet36
+RNG = RNG_stdin64, seed = unknown
+test set = expanded, folding = none
+
+rng=RNG_stdin64, seed=unknown
+length= 64 kibibytes (2^16 bytes), time= 0.1 seconds
+  Test Name                         Raw       Processed     Evaluation
+  BCFN(0+2,13-9,T)                  R= +20.1  p =  1.2e-5   mildly suspicious
+  BCFN(0+4,13-9,T)                  R= +31.7  p =  2.1e-8   very suspicious  
+  DC7-9x1Bytes-1:even               R=  +7.3  p =  9.7e-4   unusual          
+  DC7-9x1Bytes-1:odd                R=  +9.9  p =  5.0e-5   suspicious       
+  DC7-9x1Bytes-1:both               R=  +8.9  p =  1.3e-4   mildly suspicious
+  DC7-9x1Bytes-1:indep              R= +14.8  p =   8e-7    very suspicious  
+  DC7-6x2Bytes-1:even               R= +13.9  p =  2.2e-6   very suspicious  
+  DC7-6x2Bytes-1:odd                R= +13.8  p =  2.3e-6   very suspicious  
+  DC7-6x2Bytes-1:indep              R= +24.0  p =   1e-10    VERY SUSPICIOUS 
+  DC7-5x4Bytes-1:even               R= +12.8  p =  4.0e-7   very suspicious  
+  DC7-5x4Bytes-1:odd                R= +21.2  p =  1.4e-11    FAIL           
+  DC7-5x4Bytes-1:both               R= +11.9  p =  9.9e-7   very suspicious  
+  DC7-5x4Bytes-1:indep              R= +37.7  p =   2e-16     FAIL !         
+  ...and 55 test result(s) without anomalies
+

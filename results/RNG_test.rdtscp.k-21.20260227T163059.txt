@@ -1,0 +1,36 @@
+RNG_test using PractRand version 0.95-planet36
+RNG = RNG_stdin64, seed = unknown
+test set = expanded, folding = none
+
+rng=RNG_stdin64, seed=unknown
+length= 64 kibibytes (2^16 bytes), time= 0.1 seconds
+  Test Name                         Raw       Processed     Evaluation
+  BCFN(0+0,13-9,T)                  R= +39.5  p =  5.3e-10   VERY SUSPICIOUS 
+  BCFN(0+1,13-9,T)                  R= +49.0  p =  3.9e-12    FAIL           
+  BCFN(0+2,13-9,T)                  R=+282.4  p =  1.4e-64    FAIL !!!!      
+  BCFN(0+3,13-9,T)                  R=+329.1  p =  4.6e-75    FAIL !!!!      
+  BCFN(0+4,13-9,T)                  R=+333.9  p =  9.0e-79    FAIL !!!!      
+  BRank(18):128(2)                  R=+885.8  p~=  1.1e-267   FAIL !!!!!!    
+  BRank(18):256(1)                  R=+777.1  p~=  6.0e-235   FAIL !!!!!!    
+  DC7-9x1Bytes-1:even               R= +14.2  p =  3.7e-7   very suspicious  
+  DC7-9x1Bytes-1:odd                R= +14.4  p =  3.0e-7   very suspicious  
+  DC7-9x1Bytes-1:both               R= +23.0  p =  1.4e-11    FAIL           
+  DC7-9x1Bytes-1:indep              R= +27.8  p =   3e-12     FAIL           
+  DC7-6x2Bytes-1:even               R= +27.2  p =  8.9e-12    FAIL           
+  DC7-6x2Bytes-1:odd                R= +29.1  p =  1.4e-12    FAIL           
+  DC7-6x2Bytes-1:both               R= +42.1  p =  1.3e-21    FAIL !!        
+  DC7-6x2Bytes-1:indep              R= +50.7  p =  0          FAIL !!!!!!!!  
+  DC7-5x4Bytes-1:even               R= +32.0  p =  3.3e-17    FAIL !         
+  DC7-5x4Bytes-1:odd                R= +41.6  p =  2.7e-22    FAIL !!        
+  DC7-5x4Bytes-1:both               R= +63.7  p =  2.7e-34    FAIL !!!       
+  DC7-5x4Bytes-1:indep              R= +85.6  p =  0          FAIL !!!!!!!!  
+  FPF-14+6/64:(0,14-8)              R=  -6.1  p =1-7.3e-7   unusual          
+  FPF-14+6/64:all                   R=  -9.8  p =1-1.5e-6   suspicious       
+  FPF-14+6/32:all                   R=  -6.6  p =1-1.3e-4   unusual          
+  FPF-14+6/16:(1,14-8)              R= +10.9  p =  6.8e-8   suspicious       
+  FPF-14+6/16:all                   R=  +8.4  p =  1.0e-5   mildly suspicious
+  FPF-14+6/4:cross                  R= +12.9  p =  7.3e-10   VERY SUSPICIOUS 
+  Gap-16:A                          R= +64.7  p =  8.7e-51    FAIL !!!!      
+  Gap-16:B                          R= +69.5  p =  1.0e-47    FAIL !!!!      
+  ...and 41 test result(s) without anomalies
+

@@ -1,0 +1,47 @@
+RNG_test using PractRand version 0.95-planet36
+RNG = RNG_stdin64, seed = unknown
+test set = expanded, folding = none
+
+rng=RNG_stdin64, seed=unknown
+length= 64 kibibytes (2^16 bytes), time= 0.1 seconds
+  Test Name                         Raw       Processed     Evaluation
+  BCFN(0+0,13-9,T)                  R=+320.3  p =  4.2e-73    FAIL !!!!      
+  BCFN(0+1,13-9,T)                  R=+360.8  p =  3.5e-82    FAIL !!!!      
+  BCFN(0+2,13-9,T)                  R= +1114  p =  1.6e-251   FAIL !!!!!!    
+  BCFN(0+3,13-9,T)                  R= +1057  p =  9.9e-239   FAIL !!!!!!    
+  BCFN(0+4,13-9,T)                  R=+626.6  p =  6.3e-147   FAIL !!!!!     
+  BRank(18):128(2)                  R=+870.6  p~=  4.2e-263   FAIL !!!!!!    
+  BRank(18):256(1)                  R= +1121  p~=  1.2e-338   FAIL !!!!!!!   
+  DC7-9x1Bytes-1:even               R=+114.7  p =  7.4e-57    FAIL !!!!      
+  DC7-9x1Bytes-1:odd                R= +97.2  p =  3.5e-48    FAIL !!!!      
+  DC7-9x1Bytes-1:both               R=+168.3  p =  1.6e-83    FAIL !!!!      
+  DC7-9x1Bytes-1:indep              R=+236.5  p =  0          FAIL !!!!!!!!  
+  DC7-6x2Bytes-1:even               R=+119.8  p =  1.8e-49    FAIL !!!!      
+  DC7-6x2Bytes-1:odd                R=+106.9  p =  3.3e-44    FAIL !!!       
+  DC7-6x2Bytes-1:both               R=+146.4  p =  3.9e-74    FAIL !!!!      
+  DC7-6x2Bytes-1:indep              R=+210.3  p =  0          FAIL !!!!!!!!  
+  DC7-5x4Bytes-1:even               R=+143.4  p =  9.9e-76    FAIL !!!!      
+  DC7-5x4Bytes-1:odd                R=+128.6  p =  6.1e-68    FAIL !!!!      
+  DC7-5x4Bytes-1:both               R=+225.7  p =  1.8e-120   FAIL !!!!!     
+  DC7-5x4Bytes-1:indep              R=+325.4  p =  0          FAIL !!!!!!!!  
+  FPF-14+6/16:(0,14-7)              R=+166.6  p =  1.9e-132   FAIL !!!!!     
+  FPF-14+6/16:(1,14-8)              R= +61.3  p =  3.9e-44    FAIL !!!       
+  FPF-14+6/16:(2,14-8)              R=+112.8  p =  3.2e-81    FAIL !!!!      
+  FPF-14+6/16:(3,14-9)              R= +79.7  p =  1.8e-50    FAIL !!!!      
+  FPF-14+6/16:(4,14-10)             R= +61.2  p =  3.9e-33    FAIL !!!       
+  FPF-14+6/16:(5,14-11)             R= +40.5  p =  1.7e-18    FAIL !         
+  FPF-14+6/16:(6,14-11)             R= +26.4  p =  2.5e-12   VERY SUSPICIOUS 
+  FPF-14+6/16:all                   R=+325.9  p =  8.6e-223   FAIL !!!!!!    
+  FPF-14+6/16:cross                 R=+443.3  p =  8.2e-328   FAIL !!!!!!    
+  FPF-14+6/4:(0,14-5)               R=+197.3  p =  2.0e-163   FAIL !!!!!     
+  FPF-14+6/4:(1,14-6)               R=+117.7  p =  4.1e-90    FAIL !!!!!     
+  FPF-14+6/4:(2,14-7)               R=+101.2  p =  2.2e-80    FAIL !!!!      
+  FPF-14+6/4:(3,14-8)               R= +50.9  p =  1.1e-36    FAIL !!!       
+  FPF-14+6/4:(4,14-8)               R= +17.6  p =  1.0e-12   VERY SUSPICIOUS 
+  FPF-14+6/4:(5,14-9)               R=  +9.3  p =  3.9e-6   unusual          
+  FPF-14+6/4:all                    R=+281.1  p =  2.2e-229   FAIL !!!!!!    
+  FPF-14+6/4:cross                  R=+265.6  p =  4.8e-191   FAIL !!!!!!    
+  Gap-16:A                          R=+294.8  p =  1.2e-232   FAIL !!!!!!    
+  Gap-16:B                          R=+592.8  p =  6.4e-405   FAIL !!!!!!!   
+  ...and 30 test result(s) without anomalies
+
