@@ -31,7 +31,7 @@ clean:
 	@$(RM) --verbose -- $(DEPS) $(BINS)
 
 lint:
-	-clang-tidy --quiet $(SRCS) -- $(CPPFLAGS) $(CXXFLAGS) $(LDLIBS)
+	-clang-tidy --quiet $(SRCS) -- $(CPPFLAGS) $(CXXFLAGS)
 
 # https://www.gnu.org/software/make/manual/make.html#Phony-Targets
 #.PHONY: all run-dump run-benchmark clean lint
