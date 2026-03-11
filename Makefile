@@ -18,7 +18,7 @@ LDLIBS = -lfmt
 LDLIBS += `pkg-config --libs benchmark`
 
 SRCS = $(wildcard *.cpp)
-DEPS = $(SRCS:.cpp=.d)
+DEPS = $(addsuffix .d,$(basename $(SRCS)))
 BINS = $(basename $(SRCS))
 
 all: $(BINS)
