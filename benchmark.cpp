@@ -1,9 +1,7 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: MPL-2.0
 
-// https://github.com/google/benchmark
-
-#include <benchmark/benchmark.h>
+#include <benchmark/benchmark.h> // https://github.com/google/benchmark
 
 using func_u64_u_t = uint64_t (&)(const unsigned int);
 
