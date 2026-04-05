@@ -6,7 +6,7 @@
 using func_u64_u_t = uint64_t (&)(const unsigned int);
 
 void BM_rdtsc_jitter_entropy(benchmark::State& BM_state,
-        const func_u64_u_t& fn,
+        func_u64_u_t& fn,
         const unsigned int k)
 {
     // Perform setup here
@@ -24,7 +24,7 @@ using func_T_void_t = T (&)();
 
 template <std::unsigned_integral T>
 void BM_rd_rand_seed(benchmark::State& BM_state,
-        const func_T_void_t<T>& fn)
+        func_T_void_t<T>& fn)
 {
     // Perform setup here
 
