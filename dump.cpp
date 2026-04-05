@@ -213,7 +213,7 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         constexpr size_t buf_num_elems = buf_size_bytes / sizeof(result_type);
         static_assert(buf_size_bytes % sizeof(result_type) == 0);
 
-        result_type buf[buf_num_elems] = {0};
+        std::array<result_type, buf_num_elems> buf{};
 
         if (limit_bytes == 0)
         {
