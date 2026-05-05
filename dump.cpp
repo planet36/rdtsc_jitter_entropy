@@ -130,7 +130,7 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
                 try
                 {
                     const auto tmp = std::stoull(optarg);
-                    limit_bytes = std::saturate_cast<decltype(limit_bytes)>(tmp);
+                    limit_bytes = std::saturating_cast<decltype(limit_bytes)>(tmp);
                 }
                 catch (const std::invalid_argument& ex)
                 {
@@ -176,7 +176,7 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
                         tmp = min_k;
                     else if (tmp > max_k)
                         tmp = max_k;
-                    k = std::saturate_cast<decltype(k)>(tmp);
+                    k = std::saturating_cast<decltype(k)>(tmp);
                 }
                 catch (const std::invalid_argument& ex)
                 {
