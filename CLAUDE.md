@@ -88,3 +88,6 @@ Every source file and script starts with an SPDX header (`MPL-2.0`).
 `include/rdrand.h` and `include/rdtsc.hpp` also live in the owner's dotfiles repo,
 as the "Sync with dotfiles repo" commits show.  An edit to either one may need to
 be made there as well.
+
+`include/parse_int.hpp` and `include/get_num_threads.hpp` are shared with other
+projects, so keep anything specific to this repo out of them.
