@@ -9,6 +9,7 @@
 * https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 */
 
+#include "parse_int.hpp"
 #include "rdrand.h"
 #include "rdtsc_jitter_entropy.hpp"
 
@@ -17,6 +18,7 @@
 #include <cstdint>
 #include <cstdlib>
 #include <err.h>
+#include <exception>
 #include <fmt/format.h>
 #include <functional>
 #include <limits>
@@ -93,6 +95,7 @@ print_usage()
 
     fmt::println("-k  K");
     fmt::println("    Specify the estimated minimum entropy bits per sample.");
+    fmt::println("    K is an integer from {} to {}.", min_k, max_k);
     fmt::println("    (default: {})", default_k);
     nl;
 }
@@ -171,20 +174,12 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
             case 'k':
                 try
                 {
-                    auto tmp = std::stol(optarg);
-                    if (tmp < min_k)
-                        tmp = min_k;
-                    else if (tmp > max_k)
-                        tmp = max_k;
+                    const int tmp = parse_option_int(optarg, min_k, max_k, "-k");
                     k = std::saturating_cast<decltype(k)>(tmp);
                 }
-                catch (const std::invalid_argument& ex)
+                catch (const std::exception& ex)
                 {
-                    errx(EXIT_FAILURE, "invalid argument: %s: \"%s\"", ex.what(), optarg);
-                }
-                catch (const std::out_of_range& ex)
-                {
-                    errx(EXIT_FAILURE, "out of range: %s: \"%s\"", ex.what(), optarg);
+                    errx(EXIT_FAILURE, "%s", ex.what());
                 }
                 break;
 

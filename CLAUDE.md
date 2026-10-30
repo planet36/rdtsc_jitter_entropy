@@ -75,7 +75,7 @@ PractRand sweep.
 
 **Behavior of `dump`.**  It exits 0 without writing anything when stdout is a
 terminal, so a bare `./dump` looks like a no-op.  Without `-l` it runs until the
-reader closes the pipe.  It clamps `-k` to the range 1 through 63 without warning.
+reader closes the pipe.  It exits with an error unless `-k` is an integer from 1 through 63.
 
 ## Conventions
 
