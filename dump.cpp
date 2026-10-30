@@ -25,7 +25,6 @@
 #include <functional>
 #include <limits>
 #include <numeric>
-#include <stdexcept>
 #include <string>
 #include <string_view>
 #include <unistd.h>
@@ -134,23 +133,16 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
             case 'l':
                 try
                 {
-                    const auto tmp = std::stoull(optarg);
+                    const int tmp = parse_option_int(optarg, 0, std::numeric_limits<int>::max(),
+                                                     "-l");
                     limit_bytes = std::saturating_cast<decltype(limit_bytes)>(tmp);
                 }
-                catch (const std::invalid_argument& ex)
+                catch (const std::exception& ex)
                 {
-                    errx(EXIT_FAILURE, "invalid argument: %s: \"%s\"", ex.what(), optarg);
-                }
-                catch (const std::out_of_range& ex)
-                {
-                    errx(EXIT_FAILURE, "out of range: %s: \"%s\"", ex.what(), optarg);
+                    errx(EXIT_FAILURE, "%s", ex.what());
                 }
 
-                //if (__builtin_umulll_overflow(limit_bytes, bytes_per_gibibyte, &limit_bytes))
-                if (limit_bytes > std::numeric_limits<decltype(limit_bytes)>::max() / bytes_per_gibibyte)
-                {
-                    errx(EXIT_FAILURE, "Arithmetic overflow: %s * %llu", optarg, bytes_per_gibibyte);
-                }
+                // The parsed value is at most INT_MAX, so this cannot overflow.
                 limit_bytes *= bytes_per_gibibyte;
                 break;
 
