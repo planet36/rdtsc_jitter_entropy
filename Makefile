@@ -14,8 +14,7 @@ CXXFLAGS += -Wno-unused-function
 
 #LDFLAGS =
 
-LDLIBS = -lfmt
-LDLIBS += `pkg-config --libs benchmark`
+LDLIBS = `pkg-config --libs benchmark`
 
 SRCS = $(wildcard *.cpp)
 DEPS = $(addsuffix .d,$(basename $(SRCS)))

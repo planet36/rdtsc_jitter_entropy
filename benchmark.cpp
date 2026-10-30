@@ -42,9 +42,10 @@ void BM_rd_rand_seed(benchmark::State& BM_state,
 #include "rdrand.h"
 #include "rdtsc_jitter_entropy.hpp"
 
-#include <fmt/format.h>
+#include <format>
 #include <string>
 
+// NOLINTNEXTLINE(bugprone-exception-escape)
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
     using namespace std::literals;
@@ -69,10 +70,10 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     for (unsigned int k = 1; k <= 9; k += 2)
     {
         benchmark::RegisterBenchmark(
-                fmt::format("rdtsc_jitter_entropy(k={})", k),
+                std::format("rdtsc_jitter_entropy(k={})", k),
                 BM_rdtsc_jitter_entropy, rdtsc_jitter_entropy, k)->Threads(num_threads);
         benchmark::RegisterBenchmark(
-                fmt::format("rdtscp_jitter_entropy(k={})", k),
+                std::format("rdtscp_jitter_entropy(k={})", k),
                 BM_rdtsc_jitter_entropy, rdtscp_jitter_entropy, k)->Threads(num_threads);
     }
 

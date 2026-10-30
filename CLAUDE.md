@@ -28,9 +28,9 @@ These commands run a single case and write nothing to `results/`:
 ./benchmark --benchmark_filter='^rdtsc_jitter_entropy\(k=9\)'
 ```
 
-The build needs GCC with C++26 support (`std::saturating_cast`), fmt, Google
-Benchmark, and a CPU with RDSEED, because `-march=native` is what defines
-`__RDSEED__` for `include/rdrand.h`.  `RNG_test` comes from PractRand and must be
+The build needs GCC with C++26 support (`std::saturating_cast`), Google Benchmark,
+and a CPU with RDSEED, because `-march=native` is what defines `__RDSEED__` for
+`include/rdrand.h`.  `RNG_test` comes from PractRand and must be
 on `PATH`.
 
 ## Architecture

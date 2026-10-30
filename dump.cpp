@@ -21,9 +21,9 @@
 #include <cstdlib>
 #include <err.h>
 #include <exception>
-#include <fmt/format.h>
 #include <functional>
 #include <numeric>
+#include <print>
 #include <string_view>
 #include <unistd.h>
 
@@ -88,51 +88,51 @@ write_all(const int fd, const void* buf, size_t count)
 void
 print_version()
 {
-    fmt::println("{} {}", program_invocation_short_name, program_version);
-    fmt::println("License: {}", program_license);
-    fmt::println("Written by {}", program_author);
+    std::println("{} {}", program_invocation_short_name, program_version);
+    std::println("License: {}", program_license);
+    std::println("Written by {}", program_author);
 }
 
 /// Print the help message.
 void
 print_usage()
 {
-    fmt::println("Usage: {} [OPTION]...", program_invocation_short_name);
-    fmt::println("Dump RDTSC jitter entropy to stdout.");
+    std::println("Usage: {} [OPTION]...", program_invocation_short_name);
+    std::println("Dump RDTSC jitter entropy to stdout.");
     nl;
 
-    fmt::println("OPTIONS");
+    std::println("OPTIONS");
     nl;
 
-    fmt::println("-V");
-    fmt::println("    Print the version information, then exit.");
+    std::println("-V");
+    std::println("    Print the version information, then exit.");
     nl;
 
-    fmt::println("-h");
-    fmt::println("    Print this message, then exit.");
+    std::println("-h");
+    std::println("    Print this message, then exit.");
     nl;
 
-    fmt::println("-l  MAX");
-    fmt::println("    Limit the output to no more than MAX gibibytes.");
-    fmt::println("    If MAX is 0, the output is unlimited.");
-    fmt::println("    (maximum: {})", max_limit_gibibytes);
+    std::println("-l  MAX");
+    std::println("    Limit the output to no more than MAX gibibytes.");
+    std::println("    If MAX is 0, the output is unlimited.");
+    std::println("    (maximum: {})", max_limit_gibibytes);
     nl;
 
-    fmt::println("-f  FUNC");
-    fmt::println("    Specify which entropy function should be used.");
-    fmt::println("    FUNC is one of: rdtsc, rdtscp, rdseed");
-    fmt::println("    (default: {:?})", "rdtsc");
+    std::println("-f  FUNC");
+    std::println("    Specify which entropy function should be used.");
+    std::println("    FUNC is one of: rdtsc, rdtscp, rdseed");
+    std::println("    (default: {:?})", "rdtsc");
     nl;
 
-    fmt::println("-k  K");
-    fmt::println("    Specify the estimated minimum entropy bits per sample.");
-    fmt::println("    K is an integer from {} to {}.", min_k, max_k);
-    fmt::println("    (default: {})", default_k);
+    std::println("-k  K");
+    std::println("    Specify the estimated minimum entropy bits per sample.");
+    std::println("    K is an integer from {} to {}.", min_k, max_k);
+    std::println("    (default: {})", default_k);
     nl;
 }
 
-int
-main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
+// NOLINTNEXTLINE(bugprone-exception-escape)
+int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
     using namespace std::literals;
 
