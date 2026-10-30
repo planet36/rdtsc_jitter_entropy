@@ -14,7 +14,6 @@
 #include "rdtsc_jitter_entropy.hpp"
 
 #include <cassert>
-#include <climits>
 #include <cstdint>
 #include <cstdlib>
 #include <err.h>

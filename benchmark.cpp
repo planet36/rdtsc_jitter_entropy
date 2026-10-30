@@ -40,12 +40,8 @@ void BM_rd_rand_seed(benchmark::State& BM_state,
 #include "rdrand.h"
 #include "rdtsc_jitter_entropy.hpp"
 
-#include <algorithm>
-#include <cassert>
-#include <cstdlib>
 #include <fmt/format.h>
 #include <string>
-#include <thread>
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
