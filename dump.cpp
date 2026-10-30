@@ -14,8 +14,8 @@
 #include "rdtsc_jitter_entropy.hpp"
 
 #include <array>
-#include <cassert>
 #include <cerrno> // program_invocation_short_name
+#include <cstddef>
 #include <cstdint>
 #include <cstdio>
 #include <cstdlib>
@@ -23,9 +23,7 @@
 #include <exception>
 #include <fmt/format.h>
 #include <functional>
-#include <limits>
 #include <numeric>
-#include <string>
 #include <string_view>
 #include <unistd.h>
 
@@ -48,6 +46,8 @@ inline constexpr std::string_view program_license = "MPL-2.0";
 inline constexpr unsigned long long bytes_per_gigabyte = 1000ULL * 1000ULL * 1000ULL;
 inline constexpr unsigned long long bytes_per_gibibyte = 1024ULL * 1024ULL * 1024ULL;
 
+inline constexpr unsigned long long max_limit_gibibytes = 1024ULL * 1024ULL; // 1 pebibyte (PiB)
+
 inline constexpr unsigned int default_k = 3;
 inline constexpr unsigned int min_k = 1;
 inline constexpr unsigned int max_k = 63;
@@ -55,6 +55,34 @@ static_assert(min_k > 0);
 static_assert(max_k < 64);
 static_assert(min_k <= max_k);
 
+
+/// Write all \a count bytes of \a buf to \a fd
+/**
+* Retry after a partial write or \c EINTR.  Exit on any other error.
+*/
+void
+write_all(const int fd, const void* buf, size_t count)
+{
+    const auto* p = static_cast<const char*>(buf);
+
+    while (count > 0)
+    {
+        const ssize_t num_bytes_written = ::write(fd, p, count);
+
+        if (num_bytes_written < 0)
+        {
+            if (errno == EINTR)
+            {
+                continue;
+            }
+
+            err(EXIT_FAILURE, "write");
+        }
+
+        p += num_bytes_written;
+        count -= static_cast<size_t>(num_bytes_written);
+    }
+}
 
 /// Print the version information.
 void
@@ -86,6 +114,8 @@ print_usage()
 
     fmt::println("-l  MAX");
     fmt::println("    Limit the output to no more than MAX gibibytes.");
+    fmt::println("    If MAX is 0, the output is unlimited.");
+    fmt::println("    (maximum: {})", max_limit_gibibytes);
     nl;
 
     fmt::println("-f  FUNC");
@@ -133,29 +163,29 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
             case 'l':
                 try
                 {
-                    const int tmp = parse_option_int(optarg, 0, std::numeric_limits<int>::max(),
-                                                     "-l");
-                    limit_bytes = std::saturating_cast<decltype(limit_bytes)>(tmp);
+                    // the value of "-l" is gibibytes (GiB)
+                    const unsigned long long limit_gibibytes =
+                        parse_option_int(optarg, 0, max_limit_gibibytes, "-l");
+
+                    // convert GiB to B
+                    limit_bytes = limit_gibibytes * bytes_per_gibibyte;
                 }
                 catch (const std::exception& ex)
                 {
                     errx(EXIT_FAILURE, "%s", ex.what());
                 }
-
-                // The parsed value is at most INT_MAX, so this cannot overflow.
-                limit_bytes *= bytes_per_gibibyte;
                 break;
 
             case 'f':
-                if (optarg == "rdseed"s)
+                if (optarg == "rdseed"sv)
                 {
                     func = rdseed64_wrapper;
                 }
-                else if (optarg == "rdtsc"s)
+                else if (optarg == "rdtsc"sv)
                 {
                     func = rdtsc_jitter_entropy;
                 }
-                else if (optarg == "rdtscp"s)
+                else if (optarg == "rdtscp"sv)
                 {
                     func = rdtscp_jitter_entropy;
                 }
@@ -201,35 +231,20 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         constexpr size_t buf_size_bytes = 32768;
         constexpr size_t buf_num_elems = buf_size_bytes / sizeof(result_type);
         static_assert(buf_size_bytes % sizeof(result_type) == 0);
+        static_assert(bytes_per_gibibyte % buf_size_bytes == 0);
 
         std::array<result_type, buf_num_elems> buf{};
 
-        if (limit_bytes == 0)
+        const size_t num_writes = limit_bytes / buf_size_bytes;
+
+        for (size_t j = 0; (limit_bytes == 0) || (j < num_writes); ++j)
         {
-            while (true)
+            for (size_t i = 0; i < buf_num_elems; ++i)
             {
-                for (size_t i = 0; i < buf_num_elems; ++i)
-                {
-                    buf[i] = func(k);
-                }
-
-                (void)::write(STDOUT_FILENO, &buf[0], sizeof(buf));
+                buf[i] = func(k);
             }
-        }
-        else // limit_bytes > 0
-        {
-            const size_t num_writes = limit_bytes / buf_size_bytes;
-            assert(limit_bytes % buf_size_bytes == 0);
 
-            for (size_t j = 0; j < num_writes; ++j)
-            {
-                for (size_t i = 0; i < buf_num_elems; ++i)
-                {
-                    buf[i] = func(k);
-                }
-
-                (void)::write(STDOUT_FILENO, &buf[0], sizeof(buf));
-            }
+            write_all(STDOUT_FILENO, std::data(buf), sizeof(buf));
         }
     }
     // }}}
