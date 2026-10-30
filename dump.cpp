@@ -17,7 +17,6 @@
 #include <cerrno> // program_invocation_short_name
 #include <cstddef>
 #include <cstdint>
-#include <cstdio>
 #include <cstdlib>
 #include <err.h>
 #include <exception>
@@ -34,8 +33,6 @@ rdseed64_wrapper([[maybe_unused]] const unsigned int k)
 {
     return rdseed64();
 }
-
-#define nl (void)putchar('\n')
 
 inline constexpr std::string_view program_author = "Steven Ward";
 inline constexpr std::string_view program_version = "2026-02-17";
@@ -99,36 +96,36 @@ print_usage()
 {
     std::println("Usage: {} [OPTION]...", program_invocation_short_name);
     std::println("Dump RDTSC jitter entropy to stdout.");
-    nl;
+    std::println("");
 
     std::println("OPTIONS");
-    nl;
+    std::println("");
 
     std::println("-V");
     std::println("    Print the version information, then exit.");
-    nl;
+    std::println("");
 
     std::println("-h");
     std::println("    Print this message, then exit.");
-    nl;
+    std::println("");
 
     std::println("-l  MAX");
     std::println("    Limit the output to no more than MAX gibibytes.");
     std::println("    If MAX is 0, the output is unlimited.");
     std::println("    (maximum: {})", max_limit_gibibytes);
-    nl;
+    std::println("");
 
     std::println("-f  FUNC");
     std::println("    Specify which entropy function should be used.");
     std::println("    FUNC is one of: rdtsc, rdtscp, rdseed");
     std::println("    (default: {:?})", "rdtsc");
-    nl;
+    std::println("");
 
     std::println("-k  K");
     std::println("    Specify the estimated minimum entropy bits per sample.");
     std::println("    K is an integer from {} to {}.", min_k, max_k);
     std::println("    (default: {})", default_k);
-    nl;
+    std::println("");
 }
 
 // NOLINTNEXTLINE(bugprone-exception-escape)
