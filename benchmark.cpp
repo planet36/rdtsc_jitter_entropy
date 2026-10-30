@@ -36,6 +36,7 @@ void BM_rd_rand_seed(benchmark::State& BM_state,
     }
 }
 
+#include "get_num_threads.hpp"
 #include "rdrand.h"
 #include "rdtsc_jitter_entropy.hpp"
 
@@ -57,33 +58,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     if (benchmark::ReportUnrecognizedArguments(argc, argv))
         return 1;
 
-    // {{{ determine num_threads
-
-    constexpr int min_threads = 1;
-    const auto max_threads = std::max(min_threads, static_cast<int>(std::thread::hardware_concurrency()));
-    // https://en.wikipedia.org/wiki/Elvis_operator
-    //const auto max_threads = static_cast<int>(std::thread::hardware_concurrency()) ?: min_threads;
-
-    auto num_threads = min_threads;
-
-    try
-    {
-        num_threads = std::stoi(std::getenv("NUM_THREADS"));
-    }
-    catch (...)
-    {
-        num_threads = min_threads;
-    }
-
-    num_threads = std::clamp(num_threads, min_threads, max_threads);
-
-    /*
-    if (num_threads > min_threads)
-        // Don't use all the cores
-        --num_threads;
-    */
-
-    // }}}
+    const int num_threads = get_num_threads();
 
     // {{{ accuracy testing
 
