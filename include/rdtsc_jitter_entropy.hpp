@@ -31,6 +31,7 @@ https://aka.ms/win10rng
 #include <numeric> // std::gcd
 #endif
 #include <bit> // std::rotl
+#include <cstdint>
 #include <limits>
 #include <thread>
 

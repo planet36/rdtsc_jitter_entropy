@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: MPL-2.0
 
 #include <benchmark/benchmark.h> // https://github.com/google/benchmark
+#include <concepts>
+#include <cstdint>
 
 using func_u64_u_t = uint64_t (&)(const unsigned int);
 

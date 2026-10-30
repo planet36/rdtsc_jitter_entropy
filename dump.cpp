@@ -13,8 +13,11 @@
 #include "rdrand.h"
 #include "rdtsc_jitter_entropy.hpp"
 
+#include <array>
 #include <cassert>
+#include <cerrno> // program_invocation_short_name
 #include <cstdint>
+#include <cstdio>
 #include <cstdlib>
 #include <err.h>
 #include <exception>
