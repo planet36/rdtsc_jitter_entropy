@@ -27,7 +27,7 @@
 #include <unistd.h>
 
 /// The raison d'etre of this wrapper is to have the same signature as
-/// rdtsc_jitter_entropy.
+/// rdtsc_jitter_entropy
 static inline uint64_t
 rdseed64_wrapper([[maybe_unused]] const unsigned int k)
 {
@@ -81,7 +81,7 @@ write_all(const int fd, const void* buf, size_t count)
     }
 }
 
-/// Print the version information.
+/// Print the version information
 void
 print_version()
 {
@@ -90,7 +90,7 @@ print_version()
     std::println("Written by {}", program_author);
 }
 
-/// Print the help message.
+/// Print the help message
 void
 print_usage()
 {
