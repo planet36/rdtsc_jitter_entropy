@@ -79,9 +79,7 @@ reader closes the pipe.  It exits with an error unless `-k` is an integer from 1
 
 ## Conventions
 
-@COMMENT-STYLE.md governs code comments, Doxygen blocks, commit messages, and
-documentation files.  It overrides any other style, prose, vocabulary, or spelling
-guidance.
+@COMMENT-STYLE.md
 
 Every source file and script starts with an SPDX header (`MPL-2.0`).
 
