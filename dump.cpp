@@ -35,7 +35,7 @@ rdseed64_wrapper([[maybe_unused]] const unsigned int k)
 }
 
 inline constexpr std::string_view program_author = "Steven Ward";
-inline constexpr std::string_view program_version = "2026-02-17";
+inline constexpr std::string_view program_version = "2026-10-30";
 inline constexpr std::string_view program_license = "MPL-2.0";
 
 // Globals
