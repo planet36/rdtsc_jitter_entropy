@@ -4,11 +4,11 @@
 
 export LC_ALL=C
 
-# Use N-1 threads
+# Use N-1 threads.
 NUM_THREADS="$(nproc --ignore=1)"
 export NUM_THREADS
 
-# Should be an odd number for simpler median
+# This should be an odd number for a simpler median.
 BENCHMARK_REPS=5
 
 OUTPUT_DIR=results

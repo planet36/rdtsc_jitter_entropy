@@ -1,7 +1,10 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: MPL-2.0
 
+/// Dump entropy bytes to stdout
 /**
+* \file
+*
 * This program will dump bytes to stdout (as long as stdout does not refer to a
 * terminal), which could be analyzed by PractRand.
 *
@@ -160,11 +163,11 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
             case 'l':
                 try
                 {
-                    // the value of "-l" is gibibytes (GiB)
+                    // The value of "-l" is gibibytes (GiB).
                     const unsigned long long limit_gibibytes =
                         parse_option_int(optarg, 0, max_limit_gibibytes, "-l");
 
-                    // convert GiB to B
+                    // Convert GiB to B.
                     limit_bytes = limit_gibibytes * bytes_per_gibibyte;
                 }
                 catch (const std::exception& ex)

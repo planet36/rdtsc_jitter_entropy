@@ -59,9 +59,8 @@ rdtsc_jitter_entropy(const unsigned int k)
     assert(std::gcd(L, r) == 1); // r must be co-prime to L
 #endif
 
-    // number of samples to take
-    // (ceiling of the quotient of the integer division)
-    const unsigned int N = (L / r) + ((L % r) != 0);
+    // the number of samples to take
+    const unsigned int N = (L / r) + ((L % r) != 0); // int div ceil
 #if defined(DEBUG)
     assert(N > 0);
 #endif
@@ -106,9 +105,8 @@ rdtscp_jitter_entropy(const unsigned int k)
     assert(std::gcd(L, r) == 1); // r must be co-prime to L
 #endif
 
-    // number of samples to take
-    // (ceiling of the quotient of the integer division)
-    const unsigned int N = (L / r) + ((L % r) != 0);
+    // the number of samples to take
+    const unsigned int N = (L / r) + ((L % r) != 0); // int div ceil
 #if defined(DEBUG)
     assert(N > 0);
 #endif
