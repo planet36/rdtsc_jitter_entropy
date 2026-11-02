@@ -53,13 +53,14 @@ instructions, and the Intel SDM excerpts at the top of that file explain why.
 Those fences affect the timing being measured, so changing them invalidates
 comparisons with committed results.
 
-**Adding an entropy source.**  A new source touches three places, and all of them
-share the signature `uint64_t(unsigned int k)`:
+**Adding an entropy source.**  A new source touches three places, and its function
+has the signature `uint64_t(unsigned int k)`:
 
 - the `-f` option in `dump.cpp`, where `rdseed64_wrapper` shows how to adapt a
   function that ignores `k`
 - the sweep in `run-dump.sh`
-- the registrations in `benchmark.cpp`
+- the registrations in `benchmark.cpp`, where a function that takes no `k` goes
+  through `BM_rd_rand_seed`
 
 **Experiment pipelines.**  `run-dump.sh` pipes `dump` into `RNG_test` for RDSEED as
 a baseline, then for `rdtsc` and `rdtscp` at each odd `k` from 1 through 31.  It
