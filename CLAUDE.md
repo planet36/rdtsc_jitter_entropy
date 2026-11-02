@@ -29,7 +29,7 @@ These commands run a single case and write nothing to `results/`:
 ```
 
 The build needs GCC with C++26 support (`std::saturating_cast`), Google Benchmark,
-and a CPU with RDSEED, because `-march=native` is what defines `__RDSEED__` for
+and a CPU with RDSEED because `-march=native` is what defines `__RDSEED__` for
 `include/rdrand.h`.  `RNG_test` comes from PractRand and must be
 on `PATH`.
 
@@ -38,14 +38,14 @@ on `PATH`.
 **Entropy functions.**  `include/rdtsc_jitter_entropy.hpp` holds the accumulator,
 which is the rotate-and-XOR construction from the "No Time to Hash" paper cited
 in its header.  The caller passes `k`, the estimated minimum entropy bits per
-sample.  The rotation `r` is the largest odd number not above `k`, which keeps it
-co-prime to 64, so an even `k` behaves exactly like `k - 1`.  The function takes
-`ceil(64 / r)` samples and yields the thread between them.
+sample.  The rotation `r` is the largest odd number not above `k`, so an even `k`
+behaves exactly like `k - 1`.  Being odd keeps `r` co-prime to 64.  The function
+takes `ceil(64 / r)` samples and yields the thread between them.
 
 `rdtsc_jitter_entropy` and `rdtscp_jitter_entropy` are copies that differ only in
 which read they call, so a change to one belongs in both.  Each is pinned to
 `[[gnu::optimize("O1")]]` despite the global `-O3`, and committed results were
-measured that way.  Their assertions compile only under `DEBUG`, which the
+measured that way.  The functions' assertions compile only under `DEBUG`, which the
 Makefile does not define.
 
 The reads in `include/rdtsc.hpp` carry their own `MFENCE` and `LFENCE`
